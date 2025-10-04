@@ -80,6 +80,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Upload test infor
+        if: failure()
         run: |
           echo "Error in some job"
           echo "${{ toJSON(github)}}"
