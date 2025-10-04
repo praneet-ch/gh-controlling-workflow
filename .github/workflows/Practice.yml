@@ -1,4 +1,4 @@
-name: Execution Flow
+name: Practice old code
 on:
   push:
     branches:
