@@ -6,10 +6,21 @@ jobs:
       matrix:
         node-version: [16, 18, 20]
         os: [ubuntu-latest, windows-latest]
+        include:
+          - node-version: 14
+            os: [ubuntu-latest, windows-latest]
+        exclude:
+          - node-version: 20
+            os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: get the code
         uses: actions/checkout@v4
+      - name: cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json')}}
       - name: node modules
         uses: actions/setup-node@v5
         with:
