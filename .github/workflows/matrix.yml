@@ -8,10 +8,12 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         include:
           - node-version: 14
-            os: [ubuntu-latest, windows-latest]
+            os: ubuntu-latest
+          - node-version: 14
+            os: windows-latest
         exclude:
           - node-version: 20
-            os: [ubuntu-latest]
+            os: ubuntu-latest
     runs-on: ${{ matrix.os }}
     steps:
       - name: get the code
